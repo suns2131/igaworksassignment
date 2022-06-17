@@ -1,9 +1,52 @@
 import React from "react";
-import PieChart from "../presentational/PieChart";
+import styled from "styled-components";
+// import PiesChart from "../presentational/PiesChart";
+import useHXR from "../hooks/useHXR";
+import MyResponsivePie from "../presentational/viniChart";
 
-function EventCounter() {
-  const name = "접속유저";
-  return <PieChart name={name} />;
+function TopReferrer() {
+  // const name = "접속유저";
+  const result = [];
+  const { data } = useHXR("https://static.adbrix.io/front/coding-test/event_3.json");
+
+  if (data != null) {
+    const { rows } = data;
+    const responeData = [...rows].sort((a, b) => Number(b[1]) - Number(a[1]));
+    let etc = 0;
+    for (let i = 0; i < responeData.length; i += 1) {
+      if (i < 4) {
+        const resultItem = {
+          id: responeData[i][0],
+          label: responeData[i][0],
+          value: Number(responeData[i][1]),
+        };
+        result.push(resultItem);
+      } else {
+        etc += Number(responeData[i][1]);
+      }
+    }
+    result.push({
+      id: "etc",
+      label: "etc",
+      value: etc,
+    });
+    // console.log(result);
+    // console.log(`etc: ${etc}`);
+  }
+
+  return (
+    <div>
+      {/* <PiesChart name={name} ChartData={result} /> */}
+      <Vivi>
+        <MyResponsivePie data={result} />
+      </Vivi>
+    </div>
+  );
 }
 
-export default EventCounter;
+const Vivi = styled.div`
+  width: 600px;
+  height: 500px;
+`;
+
+export default TopReferrer;
