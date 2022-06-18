@@ -1,20 +1,13 @@
-// install (please make sure versions match peerDependencies)
-// yarn add @nivo/core @nivo/pie
 import React from "react";
 import { ResponsivePie } from "@nivo/pie";
 import styled from "styled-components";
 
-// make sure parent container have a defined height when using
-// responsive component, otherwise height will be 0 and
-// no chart will be rendered.
-// website examples showcase many properties,
-// you'll often use just a few of them.
 function MyResponsivePie({ data }) {
   return (
     <ComponentDiv>
       <ResponsivePie
         data={data}
-        margin={{ top: 40, right: 80, bottom: 80, left: 80 }}
+        margin={{ top: 40, bottom: 80 }}
         startAngle={-3}
         padAngle={0.7}
         cornerRadius={3}
@@ -61,7 +54,7 @@ function MyResponsivePie({ data }) {
             translateX: 0,
             translateY: 56,
             itemsSpacing: 0,
-            itemWidth: 120,
+            itemWidth: 100,
             itemHeight: 18,
             itemTextColor: "#999",
             itemDirection: "left-to-right",
@@ -84,9 +77,10 @@ function MyResponsivePie({ data }) {
 }
 
 const ComponentDiv = styled.div`
-  width: 700px;
-  height: 500px;
-  border: 1px solid #eee;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 80%;
 `;
 
 export default MyResponsivePie;

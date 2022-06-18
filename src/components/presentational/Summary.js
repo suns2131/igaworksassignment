@@ -1,10 +1,10 @@
 import React from "react";
 import styled from "styled-components";
 
-function Summary({ name, current, subtraction, description }) {
+function Summary({ current, subtraction, description }) {
   return (
     <SummaryDiv>
-      <div className="TitleDiv">{name}</div>
+      {/* <div className="TitleDiv">{name}</div> */}
       <div className="DescDiv">
         <SummarySpan>SUM</SummarySpan>
         <div>{description}</div>
@@ -16,13 +16,11 @@ function Summary({ name, current, subtraction, description }) {
 }
 
 const SummaryDiv = styled.div`
-  padding: 10px;
-  width: 600px;
-  height: 153px;
+  /* width: inherit;
+  height: inherit; */
   border: 1px solid #eeeeee;
   text-align: left;
   margin: 10px;
-  /* position: fixed; */
 
   .TitleDiv {
     font-weight: 1000;
@@ -55,7 +53,6 @@ const SummaryDiv = styled.div`
 
 const SummarySpan = styled.span`
   background-color: #eeeeee;
-  /* border: 2px solid #777; */
   color: #777;
   font-weight: 500;
   padding: 3px;

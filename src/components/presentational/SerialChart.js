@@ -1,14 +1,18 @@
 import React from "react";
 import ApexChart from "react-apexcharts";
+import styled from "styled-components";
 
-function SerialChart({ name, xLabel, YlabelBar, YlabelLine }) {
+//
+function SerialChart({ xLabel, YlabelBar, YlabelLine }) {
   const data = {
     series: [
       {
+        name: "Unique Event Count",
         type: "column",
         data: YlabelBar,
       },
       {
+        name: "Total Event Count",
         type: "line",
         data: YlabelLine,
       },
@@ -21,9 +25,6 @@ function SerialChart({ name, xLabel, YlabelBar, YlabelLine }) {
       stroke: {
         width: [0, 4],
       },
-      title: {
-        text: "Traffic Sources",
-      },
       dataLabels: {
         enabled: true,
         enabledOnSeries: [1],
@@ -33,20 +34,27 @@ function SerialChart({ name, xLabel, YlabelBar, YlabelLine }) {
         type: "datetime",
       },
       yaxis: [
-        {},
+        {
+          title: {},
+        },
         {
           opposite: true,
+          title: {},
         },
       ],
     },
   };
 
   return (
-    <div>
-      <h4>{name}</h4>
-      <ApexChart options={data.options} series={data.series} type="line" width="100%" height={450} />
-    </div>
+    <ComponentDiv>
+      <ApexChart options={data.options} series={data.series} type="line" width="100%" height="100%" />
+    </ComponentDiv>
   );
 }
+
+const ComponentDiv = styled.div`
+  width: 100%;
+  height: 90%;
+`;
 
 export default SerialChart;

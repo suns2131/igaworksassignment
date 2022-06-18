@@ -1,18 +1,42 @@
 import React from "react";
 import ApexChart from "react-apexcharts";
+import styled from "styled-components";
 
-function PiesChart({ name }) {
+function PiesChart({ name, labels, values }) {
   const data = {
-    series: [10, 20, 30, 40, 50],
-    options: {},
+    series: values,
+    options: {
+      labels,
+      legend: {
+        position: "bottom",
+      },
+      responsive: [
+        {
+          breakpoint: 480,
+          options: {
+            chart: {
+              width: 200,
+            },
+          },
+        },
+      ],
+      dataLabels: {
+        enabled: false,
+      },
+    },
   };
 
   return (
-    <div>
+    <ComponentDiv>
       <h4>{name}</h4>
-      <ApexChart options={data.options} series={data.series} type="pie" width={450} height={450} />
-    </div>
+      <ApexChart options={data.options} series={data.series} type="pie" />
+    </ComponentDiv>
   );
 }
+
+const ComponentDiv = styled.div`
+  width: 100%;
+  height: 95%;
+`;
 
 export default PiesChart;
