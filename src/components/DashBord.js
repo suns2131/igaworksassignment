@@ -64,7 +64,6 @@ export default function App({ data }) {
                       id={id}
                       draggableProps={provided.draggableProps}
                       handleProps={provided.dragHandleProps}
-                      data={data}
                     />
                   )}
                 </Draggable>

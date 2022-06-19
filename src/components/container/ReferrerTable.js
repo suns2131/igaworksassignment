@@ -3,7 +3,6 @@ import useHXR from "../hooks/useHXR";
 import Tables from "../presentational/Tables";
 
 function ReferrerTable() {
-  const name = "TopReferral";
   const { data } = useHXR("https://static.adbrix.io/front/coding-test/event_4.json");
   const result = [];
 
@@ -29,7 +28,7 @@ function ReferrerTable() {
     rowData(rows);
   }
 
-  return <Tables name={name} rowDatas={result} />;
+  return <Tables rowDatas={result} />;
 }
 
 export default ReferrerTable;

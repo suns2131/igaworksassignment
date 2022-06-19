@@ -15,7 +15,6 @@ function EventProgress({ data }) {
       YlabelLine.push(responeData[i][1]);
       YlabelBar.push(responeData[i][2]);
     }
-    // console.log(responeData);
   }
 
   return <SerialChart name={name} xLabel={xLabel} YlabelBar={YlabelBar} YlabelLine={YlabelLine} />;

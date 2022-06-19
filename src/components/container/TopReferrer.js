@@ -1,11 +1,8 @@
 import React from "react";
-// import styled from "styled-components";
 import PiesChart from "../presentational/PiesChart";
 import useHXR from "../hooks/useHXR";
-// import MyResponsivePie from "../presentational/viniChart";
 
 function TopReferrer() {
-  // const name = "접속유저";
   const result = [];
   const label = [];
   const values = [];
@@ -36,23 +33,13 @@ function TopReferrer() {
     });
     label.push("etc");
     values.push(etc);
-    // console.log(result);
-    // console.log(`etc: ${etc}`);
   }
 
   return (
     <div>
       <PiesChart ChartData={result} labels={label} values={values} />
-      {/* <Vivi>
-        <MyResponsivePie data={result} />
-      </Vivi> */}
     </div>
   );
 }
-
-// const Vivi = styled.div`
-//   width: 600px;
-//   height: 500px;
-// `;
 
 export default TopReferrer;

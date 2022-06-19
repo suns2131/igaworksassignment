@@ -4,7 +4,6 @@ import styled from "styled-components";
 function Summary({ current, subtraction, description }) {
   return (
     <SummaryDiv>
-      {/* <div className="TitleDiv">{name}</div> */}
       <div className="DescDiv">
         <SummarySpan>SUM</SummarySpan>
         <div>{description}</div>
@@ -16,8 +15,6 @@ function Summary({ current, subtraction, description }) {
 }
 
 const SummaryDiv = styled.div`
-  /* width: inherit;
-  height: inherit; */
   text-align: left;
   margin: 10px;
 
