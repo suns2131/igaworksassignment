@@ -54,3 +54,5 @@
 ```
 
 ### 과제 실행 영상
+https://user-images.githubusercontent.com/42165194/174468893-f048281a-c06f-426f-b9de-c4a239610dc0.mp4
+
