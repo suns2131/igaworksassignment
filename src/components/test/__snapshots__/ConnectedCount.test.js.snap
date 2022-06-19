@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`matches snapshot 1`] = `
+<div>
+  <div
+    class="sc-bczRLJ iNMQBj"
+  >
+    <div
+      class="DescDiv"
+    >
+      <span
+        class="sc-gsnTZi kIhmbF"
+      >
+        SUM
+      </span>
+      <div>
+        Unique Event Count
+      </div>
+    </div>
+    <div
+      class="Sums"
+    >
+      41,233
+    </div>
+    <div
+      class="Plus"
+    >
+      ↑
+      93
+    </div>
+  </div>
+</div>
+`;
