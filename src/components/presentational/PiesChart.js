@@ -35,8 +35,8 @@ function PiesChart({ name, labels, values }) {
 }
 
 const ComponentDiv = styled.div`
-  width: 100%;
-  height: 95%;
+  width: 95%;
+  height: 90%;
 `;
 
 export default PiesChart;

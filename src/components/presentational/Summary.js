@@ -18,7 +18,6 @@ function Summary({ current, subtraction, description }) {
 const SummaryDiv = styled.div`
   /* width: inherit;
   height: inherit; */
-  border: 1px solid #eeeeee;
   text-align: left;
   margin: 10px;
 

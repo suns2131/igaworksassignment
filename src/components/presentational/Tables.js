@@ -54,7 +54,8 @@ function Tables({ rowDatas }) {
 const ComponentDiv = styled.div`
   display: flex;
   flex-direction: column;
-  height: 94%;
+  height: 91%;
+  background-color: white;
 
   .grid-wrapper {
     flex: 1 1 0px;

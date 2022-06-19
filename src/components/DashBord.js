@@ -18,6 +18,8 @@ import EventProgress from "./container/EventProgress";
 import ReferrerTable from "./container/ReferrerTable";
 import TopReferrer from "./container/TopReferrer";
 
+const settingData = JSON.parse(sessionStorage.getItem("setting"));
+let currentLayout;
 const layout1 = [
   { i: "1", w: 6, h: 1, x: 0, y: 0 },
   { i: "2", w: 12, h: 2, x: 0, y: 0 },
@@ -33,18 +35,6 @@ const defaultlayout = [
   { i: "4", w: 6, h: 2, x: 0, y: 0 },
   { i: "5", w: 6, h: 2, x: 6, y: 0 },
 ];
-
-const layout2 = produce(layout1, draft => {
-  console.log(`draft`);
-  console.log(draft);
-  // eslint-disable-next-line no-param-reassign
-
-  draft[0].x = 2;
-  draft[1].x = 0;
-  draft[2].x = 6;
-  draft[3].x = 0;
-  draft[4].x = 6;
-});
 
 export default function App({ data }) {
   const [groups, setGroups] = useState(["group1", "group2", "group3"]);
@@ -89,14 +79,13 @@ export default function App({ data }) {
 }
 
 function Grid(props) {
-  const [layout, setLayout] = useState(layout1);
-  // const toggleLayout = () => setLayout(layout1);
+  const [layout, setLayout] = useState(settingData !== null ? settingData : layout1);
   const toggleLayout = () => setLayout(prev => (prev === layout1 ? defaultlayout : layout1));
 
   const handleLayoutChange = layout => {
     setLayout(prev => {
       const next = layout.map(({ i, w, h, x, y }) => ({ i, w, h, x, y }));
-      // console.log(isEqual(next, prev));
+      currentLayout = next;
       return isEqual(next, prev)
         ? prev
         : produce(prev, draft => {
@@ -105,33 +94,40 @@ function Grid(props) {
     });
   };
 
-  const serializedLayout = useMemo(() => {
-    const string = JSON.stringify(layout);
-    return `[\n${string
-      .slice(1, string.length - 1)
-      .replace(/},/g, "},\n")
-      .replace(/{/g, "  {")}\n]`;
-  }, [layout]);
-
   return (
-    <>
+    <div>
       {props.debug && (
-        <>
-          <button onClick={toggleLayout}>test toggle</button>
-          {/* <pre>{serializedLayout}</pre> */}
-        </>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "flex-end",
+            alignItems: "center",
+            marginTop: "10px",
+            marginRight: "10px",
+            marginBottom: "5px",
+          }}
+        >
+          <button onClick={toggleLayout}>초기화</button>{" "}
+          <button
+            onClick={() => {
+              sessionStorage.setItem("setting", JSON.stringify(currentLayout));
+            }}
+          >
+            저장하기
+          </button>
+        </div>
       )}
-      <div style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
+      <div style={{ backgroundColor: "white" }}>
         <RGL
           containerPadding={[0, 0]}
           layout={layout}
-          width={900}
+          width={1010}
           maxwidth={300}
           rowHeight={200}
           onLayoutChange={handleLayoutChange}
           draggableHandle=".handle"
-          // onDrop={console.log}
           isDroppable
+          style={{ background: "white" }}
         >
           <Item key="1" title="conUser">
             <ConnectedUser data={props.data} />
@@ -150,7 +146,7 @@ function Grid(props) {
           </Item>
         </RGL>
       </div>
-    </>
+    </div>
   );
 }
 
